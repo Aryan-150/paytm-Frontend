@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+    --font-dmsans: "DM Sans", sans-serif;
+    --font-opensans: "Open Sans", sans-serif;
+
+    --color-woodsmoke-50: #f7f7f8;
+    --color-woodsmoke-100: #efeef0;
+    --color-woodsmoke-200: #dbdadd;
+    --color-woodsmoke-300: #bcbabf;
+    --color-woodsmoke-400: #97949c;
+    --color-woodsmoke-500: #7b7780;
+    --color-woodsmoke-600: #646069;
+    --color-woodsmoke-700: #524e56;
+    --color-woodsmoke-800: #464349;
+    --color-woodsmoke-900: #3c3b3f;
+    --color-woodsmoke-950: #1c1b1d;
+}
