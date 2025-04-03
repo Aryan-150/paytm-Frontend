@@ -7,6 +7,10 @@ const headingStyles = cva("flex justify-center items-center text-center tracking
         variant: {
             main: "text-woodsmoke-950 text-4xl font-bold",
             sub: "text-woodsmoke-500 text-lg font-medium w-4/5",
+        },
+        size: {
+            md: "self-center text-2xl",
+            lg: "",
         }
     },
     defaultVariants: {

@@ -10,8 +10,8 @@ const inputStyles = cva("outline-none font-dmsans text-woodsmoke-900", {
       lg: "w-full border-1 border-woodsmoke-200 px-3 py-1 rounded-lg font-medium tracking-wide text-lg",
     },
     labelStyle: {
-      normal: "text-base font-stretch-110% font-medium tracking-wide",
-      dark: "px-1.5 py-2 text-lg font-bold tracking-wide leading-2 tracking-tight",
+      normal: "text-base font-stretch-110% font-semibold tracking-wide",
+      dark: "px-1.5 py-2.5 text-xl font-bold tracking-wide leading-2 tracking-tight",
     },
   },
 });
@@ -39,7 +39,7 @@ export default function Input({
     <div className={cn("flex flex-col gap-1 justify-items-start py-1 w-full")}>
       <label
         htmlFor={placeholder.toUpperCase()}
-        className={cn(inputStyles({ labelStyle }))}
+        className={cn(inputStyles({ labelStyle }), "pl-1")}
       >
         {labelName}
       </label>
