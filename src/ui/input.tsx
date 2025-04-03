@@ -2,49 +2,54 @@ import { cva, VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes } from "react";
 import { cn } from "../utils";
 
-const inputStyles = cva("outline-none font-dmsans text-woodsmoke-800", {
-    variants: {
-        variant: {
-            sm: "w-72 border-1 border-woodsmoke-200 px-2 py-1 rounded",
-            md: "",
-            lg: "",
-        }
+const inputStyles = cva("outline-none font-dmsans text-woodsmoke-900", {
+  variants: {
+    variant: {
+      sm: "border-1 border-woodsmoke-200 px-2 py-1 rounded text-woodsmoke-800",
+      md: "",
+      lg: "w-full border-1 border-woodsmoke-200 px-3 py-1 rounded-lg font-medium tracking-wide text-lg",
     },
-    defaultVariants: {
-        variant: "sm"
-    }
-})
+    labelStyle: {
+      normal: "text-base font-stretch-110% font-medium tracking-wide",
+      dark: "px-1.5 py-2 text-lg font-bold tracking-wide leading-2 tracking-tight",
+    },
+  },
+});
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputStyles> {
-    type: string,
-    placeholder: string;
-    label: string;
+type InputVariants = VariantProps<typeof inputStyles>;
+
+interface InputProps
+  extends InputHTMLAttributes<HTMLInputElement>,
+    Required<InputVariants> {
+  type: string;
+  placeholder: string;
+  labelName: string;
 }
 
 export default function Input({
-    type,
-    placeholder,
-    label,
-    variant,
-    className,
-    ...props
+  type,
+  placeholder,
+  labelName,
+  variant,
+  labelStyle,
+  className,
+  ...props
 }: InputProps) {
-    return (
-        <div className={cn(
-            "flex flex-col gap-1 justify-items-start py-1"
-        )}>
-            <label htmlFor={placeholder.toUpperCase()}
-                className={cn(
-                    "font-dmsans text-base font-stretch-110% font-semibold tracking-wide"
-                )}
-            >{label}</label>
-                <input id={placeholder.toUpperCase()} type={type} placeholder={placeholder} {...props}
-                    className={cn(
-                        inputStyles({variant}),
-                        "w-full",
-                        className
-                    )}
-                />
-        </div>
-    )
+  return (
+    <div className={cn("flex flex-col gap-1 justify-items-start py-1 w-full")}>
+      <label
+        htmlFor={placeholder.toUpperCase()}
+        className={cn(inputStyles({ labelStyle }))}
+      >
+        {labelName}
+      </label>
+      <input
+        id={placeholder.toUpperCase()}
+        type={type}
+        placeholder={placeholder}
+        {...props}
+        className={cn(inputStyles({ variant }), "w-full", className)}
+      />
+    </div>
+  );
 }

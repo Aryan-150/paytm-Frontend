@@ -1,8 +1,9 @@
-export default function BottomWarning() {
+import { ReactNode } from "react";
+
+export default function BottomWarning({ children }: { children: ReactNode }) {
     return (
-        <section>
-            <p className="font-dmsans font-medium">Already have an account?{" "}
-                <a href="/signin" className="underline underline-offset-1">Sign in</a></p>
-        </section>
+        <>
+            {children}
+        </>
     )
 }

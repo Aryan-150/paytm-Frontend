@@ -1,6 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { ButtonHTMLAttributes, ReactElement } from "react";
 import { cn } from "../utils";
+import SendMoneyModal from "./sendMoneyModal";
 
 const buttonStyles = cva("font-dmsans flex justify-center items-center hover:cursor-pointer transition-all duration-300", {
     variants: {
@@ -9,9 +10,9 @@ const buttonStyles = cva("font-dmsans flex justify-center items-center hover:cur
             secondary: "",
         },
         size: {
-            sm: "",
+            sm: "px-5 py-2 text-base font-medium rounded-md w-fit",
             md: "",
-            lg: "py-2 text-base font-medium rounded-lg",
+            lg: "py-2 my-1 text-base font-medium rounded-lg",
         }
     },
     defaultVariants: {
@@ -20,26 +21,26 @@ const buttonStyles = cva("font-dmsans flex justify-center items-center hover:cur
     }
 })
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonStyles> {
+interface ButtonProps extends VariantProps<typeof buttonStyles> {
     text: ReactElement | string;
+    onClick ?: ReactElement;
 }
 
 export default function Button({
     variant,
     size,
     text,
-    className,
+    onClick,
     ...props
 }: ButtonProps) {
     return (
         <button {...props}
             className={cn(
-                buttonStyles({variant, size}),
                 "w-full",
-                className
+                buttonStyles({variant, size}),
             )}
             onClick={() => {
-
+                <SendMoneyModal />
             }}
             >
             {text}
