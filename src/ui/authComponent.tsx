@@ -6,10 +6,12 @@ import BottomWarning from "./bottonWarning";
 interface AuthComponentProps {
     text: "Sign Up" | "Sign In";
     children: ReactNode;
+    onClick ?: () => void
 }
 
 export default function AuthComponent({
     text,
+    onClick,
     children
 }: AuthComponentProps) {
     return (
@@ -22,7 +24,7 @@ export default function AuthComponent({
                 <form action="submit" className="flex flex-col gap-1 w-full mb-2">
                     {children}
                 </form>
-                <Button variant={"primary"} size={"lg"} text={text.toLowerCase()} />
+                <Button variant={"primary"} size={"lg"} text={text.toLowerCase()} onClick={onClick} />
                 <BottomWarning>
                     { 
                         text === "Sign Up"

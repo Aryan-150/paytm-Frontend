@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, Ref } from "react";
 import { cn } from "../utils";
 
 const inputStyles = cva("outline-none font-dmsans text-woodsmoke-900", {
@@ -24,12 +24,14 @@ interface InputProps
   type: string;
   placeholder: string;
   labelName: string;
+  reference: Ref<HTMLInputElement>;
 }
 
 export default function Input({
   type,
   placeholder,
   labelName,
+  reference,
   variant,
   labelStyle,
   className,
@@ -44,6 +46,7 @@ export default function Input({
         {labelName}
       </label>
       <input
+        ref={reference}
         id={placeholder.toUpperCase()}
         type={type}
         placeholder={placeholder}

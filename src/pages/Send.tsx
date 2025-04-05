@@ -1,10 +1,13 @@
-import { cn } from "../../utils";
-import Button from "../button";
-import Heading from "../heading";
-import Input from "../input";
-import UserProfile from "../userprofile";
+import { useRef } from "react";
+import Button from "../ui/button";
+import Heading from "../ui/heading";
+import Input from "../ui/input";
+import UserProfile from "../ui/userprofile";
+import { cn } from "../utils";
 
 export default function Send() {
+    const sendMoneyRef = useRef<HTMLInputElement>(null);
+
     return (
         <section className="w-screen h-screen bg-woodsmoke-50 flex justify-center items-center">
             <div className={cn(
@@ -13,7 +16,7 @@ export default function Send() {
             )}>
                 <Heading text={"Send Money"} className="mb-5" />
                 <UserProfile letter="A" username="Aryan" variant={"send_money"} size={"md"} />
-                <Input variant={"lg"} labelStyle={"normal"} type={"text"} placeholder={"Enter amount"} labelName={"Amount (in Rs)"} />
+                <Input reference={sendMoneyRef} variant={"lg"} labelStyle={"normal"} type={"text"} placeholder={"Enter amount"} labelName={"Amount (in Rs)"} />
                 <Button variant={"send_money"} size={"lg"} text={"Initiate Transfer"} />
             </div>
             

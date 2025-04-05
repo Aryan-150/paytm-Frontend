@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { cn } from "../utils";
 import Avatar from "./avatar";
+import { NameCharContext } from "../stateProviders/nameCharProvider";
 
 export default function Header() {
+  const { nameChar } = useContext(NameCharContext);
   return (
     <div
       className={cn(
@@ -14,7 +17,7 @@ export default function Header() {
         </p>
         <div className="flex justify-center items-center gap-3 px-4 py-2">
           <p className="font-dmsans font-medium text-xl">Hello</p>
-          <Avatar variant={"display"} size={"sm"} letter={"U"} />
+          <Avatar variant={"display"} size={"sm"} letter={nameChar} />
         </div>
       </div>
     </div>

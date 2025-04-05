@@ -41,9 +41,7 @@ export default function Button({
                 "w-full",
                 buttonStyles({variant, size}),
             )}
-            onClick={() => {
-                navigate("/send")
-            }}
+            onClick={onClick}
             >
             {text}
         </button>
