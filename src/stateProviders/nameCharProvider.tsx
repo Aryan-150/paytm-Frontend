@@ -1,30 +1,23 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
 
-export const NameCharContext = createContext({
+interface NameCharContextType {
+    nameChar: string;
+    setNameChar: Dispatch<SetStateAction<string>>;
+}
+
+export const NameCharContext = createContext<NameCharContextType>({
     nameChar: "",
-    setNameChar: (nameChar: string) => {}
-});
+    setNameChar: () => {}
+})
 
-//! React state variables are not persistent across page reloads:
 export function NameCharContextProvider({ children }: { children: ReactNode }) {
-    const [nameChar, setNameChar] = useState<string>(() => {
-        // Initialize from localStorage
-        return localStorage.getItem("nameChar") || "";
-    });
-
-    useEffect(() => {
-        // Persist to localStorage whenever nameChar changes
-        localStorage.setItem("nameChar", nameChar);
-    }, [nameChar]);
+    const [nameChar, setNameChar] = useState<string>("");
 
     return (
-        <>
-            <NameCharContext.Provider value={{
-                nameChar: nameChar,
-                setNameChar: setNameChar
-            }}>
-                {children}
-            </NameCharContext.Provider>
-        </> 
-    );
+        <NameCharContext.Provider value={{ nameChar, setNameChar }}>
+            {children}
+        </NameCharContext.Provider>
+    )
 }
+
+export const useNameCharContext = () => useContext(NameCharContext);
