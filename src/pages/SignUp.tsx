@@ -42,8 +42,6 @@ export default function SignUp() {
                     "Content-Type": "application/json"
                 }
             }) // signup-done
-
-            if(response.data.errorType) throw new Error();
             
             setIsAuthMessage(true);
             setResponseMessage(...[], [response.data.msg]);
@@ -55,7 +53,7 @@ export default function SignUp() {
                 console.log('normal error');
                 
                 setIsAuthMessage(true);
-                setResponseMessage(...[], [error.response.data.msg.split(":")[2]]);
+                setResponseMessage(...[], [error.response.data.msg.split(":")[1].trim()]);
                 setTimeout(() => setIsAuthMessage(false), 3000);
                 return;
             }

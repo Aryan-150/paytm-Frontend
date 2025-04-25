@@ -8,11 +8,7 @@ export default function Balance() {
     const [balance, setBalance] = useState<number>(0);
     async function getBalance() {
         setIsLoading(true);
-        const response = await axios.get(`${BASE_URL}/api/v1/account/balance`, {
-            headers: {
-                "Authorization": localStorage.getItem('token')
-            }
-        })
+        const response = await axios.get(`${BASE_URL}/api/v1/account/balance`)
         setBalance(response.data.balance);
         await new Promise(resolve => setTimeout(resolve, 200));
         setIsLoading(false);

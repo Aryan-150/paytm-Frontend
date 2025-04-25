@@ -2,12 +2,12 @@ import { cva, VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, Ref } from "react";
 import { cn } from "../utils";
 
-const inputStyles = cva("outline-none font-dmsans text-woodsmoke-900", {
+const inputStyles = cva("outline-none font-dmsans text-woodsmoke-900 transition-all duration-200", {
   variants: {
     variant: {
-      sm: "border-1 border-woodsmoke-200 px-2 py-1 rounded text-woodsmoke-800",
+      sm: "border-1 border-woodsmoke-200 px-2 py-1 rounded focus:shadow-sm text-woodsmoke-800",
       md: "",
-      lg: "w-full border-1 border-woodsmoke-200 px-3 py-1 rounded-lg font-medium tracking-wide text-lg",
+      lg: "w-full border-1 border-woodsmoke-200 px-3 py-1.5 rounded-lg focus:shadow-sm font-medium tracking-wide text-lg",
     },
     labelStyle: {
       normal: "text-base font-stretch-110% font-semibold tracking-wide",
@@ -50,8 +50,9 @@ export default function Input({
         id={placeholder.toUpperCase()}
         type={type}
         placeholder={placeholder}
+        autoComplete="off"
         {...props}
-        className={cn(inputStyles({ variant }), "w-full", className)}
+        className={cn(inputStyles({ variant }), "w-full focus:ring-2 focus:ring-offset-1 ring-woodsmoke-200 ring-offset-woodsmoke-100", className)}
       />
     </div>
   );

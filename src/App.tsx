@@ -9,27 +9,32 @@ import { UserContextProvider } from "./stateProviders/userProvider";
 import { LoggedInContextProvider } from "./stateProviders/loggedInProvider";
 import { AuthMessageContextProvider } from "./stateProviders/authMessageProvider";
 import { ResponseMessageProvider } from "./stateProviders/resMessageProvider";
+import { AccountProvider, AllAccountsProvider } from "./stateProviders/allAccountsProvider";
 
 export default function App() {
   return (
-    <AuthMessageContextProvider>
-      <ResponseMessageProvider>
-        <LoggedInContextProvider>
-          <UserContextProvider>
-            <NameCharContextProvider>
-              <BrowserRouter>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/signin" element={<SignIn />} />
-                  <Route path="/signup" element={<SignUp />} />
-                  <Route path="/dashboard" element={<DashBoard />} />
-                  <Route path="/send" element={<Send />} />
-                </Routes>
-              </BrowserRouter>
-            </NameCharContextProvider>
-          </UserContextProvider>
-        </LoggedInContextProvider>
-      </ResponseMessageProvider>
-    </AuthMessageContextProvider>
+    <AllAccountsProvider>
+      <AccountProvider>
+        <AuthMessageContextProvider>
+          <ResponseMessageProvider>
+            <LoggedInContextProvider>
+              <UserContextProvider>
+                <NameCharContextProvider>
+                  <BrowserRouter>
+                    <Routes>
+                      <Route path="/" element={<HomePage />} />
+                      <Route path="/signin" element={<SignIn />} />
+                      <Route path="/signup" element={<SignUp />} />
+                      <Route path="/dashboard" element={<DashBoard />} />
+                      <Route path="/send" element={<Send />} />
+                    </Routes>
+                  </BrowserRouter>
+                </NameCharContextProvider>
+              </UserContextProvider>
+            </LoggedInContextProvider>
+          </ResponseMessageProvider>
+        </AuthMessageContextProvider>
+      </AccountProvider>
+    </AllAccountsProvider>
   );
 }

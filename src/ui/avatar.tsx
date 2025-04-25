@@ -20,6 +20,7 @@ const avatarStyles = cva("rounded-full font-bmsans font-semibold cursor-pointer 
 
 interface AvatarProps extends VariantProps<typeof avatarStyles> {
     letter: string;
+    onClick ?: () => void;
 }
 
 export default function Avatar({
@@ -31,7 +32,7 @@ export default function Avatar({
         <section className={cn(
             avatarStyles({variant, size})
         )}>
-            {letter.toUpperCase()}
+            {letter?.toUpperCase()}
         </section>
     )
 }

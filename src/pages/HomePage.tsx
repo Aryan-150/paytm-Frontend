@@ -1,7 +1,9 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom"
 export default function HomePage() {
-    return (
-        <section>
-            Home page:
-        </section>
-    )
+    const navigate = useNavigate();
+    useEffect(() => {
+        navigate("/signup");
+    }, [])
+    return null;
 }

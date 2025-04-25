@@ -5,12 +5,12 @@ interface LoaderContextType {
 }
 
 export const LoaderContext = createContext<LoaderContextType>({
-    isLoading: true,
+    isLoading: false,
     setIsLoading: () => {}
 })
 
 export function LoaderContextProvider({ children }: { children: ReactNode }){
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <LoaderContext.Provider value={{ isLoading, setIsLoading }}>
